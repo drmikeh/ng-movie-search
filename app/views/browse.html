@@ -1,0 +1,40 @@
+<div>
+    <h2>Search For Any Movie!</h2>
+
+    <form name="searchForm"
+          role="form"
+          class="form-horizontal"
+          ng-submit="search()" novalidate>
+
+        <fieldset>
+            <!-- TITLE -->
+            <div class="form-group">
+                <label for="title" class="col-xs-3 control-label">Title: </label>
+                <div class="col-xs-5">
+                    <input type="text" class="form-control" ng-model="searchInput.title" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="year" class="col-xs-3 control-label">Year: </label>
+                <div class="col-xs-5">
+                    <input type="text" class="form-control" ng-model="searchInput.year">
+                </div>
+            </div>
+        </fieldset>
+
+        <div class="pull-right2">
+            <button type="button"
+                    class="btn btn-warning"
+                    ng-disabled="!searchInput.title"
+                    ng-click="reset()">Reset</button>
+            <button type="button"
+                    class="btn btn-success"
+                    ng-disabled="searchForm.$invalid"
+                    ng-click="search()">Search</button>
+        </div>
+    </form>
+
+    <div>
+        <pre>data: {{ movieData.data | json }}</pre>
+    </div>
+</div>
