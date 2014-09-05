@@ -12,6 +12,8 @@ angular.module('gaCodeChallengeApp')
 
     $scope.search = function() {
 
+        $scope.showResults = false;
+
         // example: http://www.omdbapi.com/?t=True%20Grit&y=1969'
         var url = 'http://www.omdbapi.com/?t=' + $scope.searchInput.title;
         if ($scope.searchInput.year) {
@@ -19,31 +21,42 @@ angular.module('gaCodeChallengeApp')
         }
 
         $http.get(url)
-        .success(function(data, status, headers, config) {
+        .success(function(data /*, status, headers, config */) {
             $log.info('Success!');
-            $scope.movieData = {
-                data : data,
-                status : status,
-                headers : headers,
-                config : config
-            };
+            $scope.movieData = data;
+            $scope.showResults = true;
         })
-        .error(function(data, status, headers, config) {
+        .error(function(/* data, status, headers, config */) {
             $log.error('Oops!');
-            $scope.movieData = {
-                data : data,
-                status : status,
-                headers : headers,
-                config : config
-            };
+            $scope.reset();
         });
     };
 
     $scope.reset = function() {
-        $scope.searchInput = {
-            title: ''
-        };
-        $scope.movieData = {};
+        $scope.searchInput = {};
+        $scope.showResults = false;
+        // $scope.movieData = {};
+    };
+
+    var recommendedMovies = [
+        { title: 'True Grit' },
+        { title: 'True Grit', year: '1969' },
+        { title: 'The Matrix' },
+        { title: 'Gone With The Wind' },
+        { title: 'Ferris Bueller\'s Day Off' },
+        { title: 'Batman' },
+        { title: 'Batman Begins' },
+        { title: 'Star Trek' },
+        { title: 'Star Wars: Episode IV - A New Hope'}
+    ];
+
+    var rCounter = 0;
+
+    $scope.recommendAMovie = function() {
+        var movie = recommendedMovies[rCounter];
+        rCounter = (rCounter + 1) % recommendedMovies.length;
+        $scope.searchInput = movie;
+        $scope.search();
     };
 
     $scope.reset();

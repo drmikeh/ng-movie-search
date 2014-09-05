@@ -8,12 +8,7 @@
  * Controller of the gaCodeChallengeApp
  */
 angular.module('gaCodeChallengeApp')
-  .controller('HomeCtrl', function ($scope, $state) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+.controller('HomeCtrl', function ($scope, $state) {
 
     $scope.tabs = [
         { heading: 'Home',    route: 'home',    active: false },
@@ -35,4 +30,4 @@ angular.module('gaCodeChallengeApp')
         });
     });
 
-  });
+});

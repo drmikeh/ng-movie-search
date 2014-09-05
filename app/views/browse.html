@@ -1,40 +1,68 @@
-<div>
-    <h2>Search For Any Movie!</h2>
+<div class="jumbotron2">
+    <div class="container" style="text-align: center;">
 
-    <form name="searchForm"
-          role="form"
-          class="form-horizontal"
-          ng-submit="search()" novalidate>
-
-        <fieldset>
-            <!-- TITLE -->
+        <h2>Search For Any Movie!</h2>
+        <form role="form" name="searchForm" class="form-inline" ng-submit="search()" novalidate>
             <div class="form-group">
-                <label for="title" class="col-xs-3 control-label">Title: </label>
-                <div class="col-xs-5">
-                    <input type="text" class="form-control" ng-model="searchInput.title" required>
-                </div>
+                <label class="sr-only" for="title">Title</label>
+                <input type="text" class="form-control" id="inputTitle"
+                       placeholder="Title" ng-model="searchInput.title" required>
             </div>
             <div class="form-group">
-                <label for="year" class="col-xs-3 control-label">Year: </label>
-                <div class="col-xs-5">
-                    <input type="text" class="form-control" ng-model="searchInput.year">
-                </div>
+                <label class="sr-only" for="inputYear">Year (optional)</label>
+                <input type="text" class="form-control" id="inputYear"
+                       placeholder="Year (optional)" ng-model="searchInput.year">
             </div>
-        </fieldset>
-
-        <div class="pull-right2">
-            <button type="button"
-                    class="btn btn-warning"
-                    ng-disabled="!searchInput.title"
-                    ng-click="reset()">Reset</button>
             <button type="button"
                     class="btn btn-success"
                     ng-disabled="searchForm.$invalid"
-                    ng-click="search()">Search</button>
-        </div>
-    </form>
+                    ng-click="search()">Search
+            </button>
+            <button type="button"
+                    class="btn btn-warning"
+                    ng-disabled="!searchInput.title"
+                    ng-click="reset()">Reset
+            </button>
+            <button type="button"
+                    class="btn btn-primary"
+                    ng-click="recommendAMovie()">Recommend
+            </button>
+        </form>
+    </div>
 
-    <div>
-        <pre>data: {{ movieData.data | json }}</pre>
+    <hr/>
+
+    <div class="container">
+        <div ng-cloak
+             class="movie my-show-hide-animation"
+             ng-show="showResults">
+            <div class="row">
+                <div class="col-sm-4">
+                    <img ng-show="movieData.Poster !== 'N/A'"
+                         class="img img-responsive img-rounded"
+                         ng-src="{{ movieData.Poster }}"/>
+                </div>
+
+                <div class="col-sm-8">
+                    <h2>{{ movieData.Title }} <small>({{ movieData.Year }})</small></h2>
+                    <p>{{ movieData.Rated }} | {{ movieData.Runtime }} | {{ movieData.Genre }} | {{ movieData.Released }} ({{ movieData.Country }})</p>
+
+                    <hr/>
+                    <p>Rating: {{ movieData.imdbRating }}/10 from {{ movieData.imdbVotes }} users</p>
+                    <p>Awards: {{ movieData.Awards }}</p>
+
+                    <hr/>
+                    <p>{{ movieData.Plot }}</p>
+
+                    <hr/>
+                    <p><strong>Directors:</strong> {{ movieData.Director }}</p>
+                    <p><bold>Writers:</bold> {{ movieData.Writer }}</p>
+                    <p>Stars: {{ movieData.Actors }}</p>
+
+                    <!-- <hr/> -->
+                    <!-- <pre>{{ movieData | json }}</pre> -->
+                </div>
+            </div>
+        </div>
     </div>
 </div>
