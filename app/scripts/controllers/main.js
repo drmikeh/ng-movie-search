@@ -8,12 +8,13 @@
  * Controller of the gaCodeChallengeApp
  */
 angular.module('gaCodeChallengeApp')
-.controller('HomeCtrl', function ($scope, $state) {
+.controller('MainCtrl', function ($scope, $state) {
 
     $scope.tabs = [
-        { heading: 'Home',    route: 'home',    active: false },
-        { heading: 'Browse',  route: 'browse',  active: false },
-        { heading: 'About',   route: 'about',   active: false }
+        { heading: 'Home',    route: 'home',           active: false },
+        { heading: 'Search',  route: 'search.list',    active: false },
+        { heading: 'Details', route: 'search.details', active: false },
+        { heading: 'About',   route: 'about',          active: false }
     ];
 
     $scope.go = function(route) {
