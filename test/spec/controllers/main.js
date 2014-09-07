@@ -17,6 +17,6 @@ describe('Controller: MainCtrl', function () {
     }));
 
     it('should attach a list of tabs to the scope', function () {
-        expect(scope.tabs.length).toBe(3);
+        expect(scope.tabs.length).toBe(4);
     });
 });
