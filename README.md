@@ -5,8 +5,8 @@ A simple AngularJS app that searches for movie information.
 ## Build Instructions
 To build this app from the source you will need to install
 [npm](https://www.npmjs.org), [ruby](https://www.ruby-lang.org),
-[compass](http://compass-style.org), and then use npm to install
-globally install [grunt](http://gruntjs.com) and [bower](http://bower.io).
+[compass](http://compass-style.org), and then use npm to globally
+install [grunt](http://gruntjs.com) and [bower](http://bower.io).
 Once these tools are installed, simple run the following commands from
 the main directory:
 
@@ -23,6 +23,8 @@ server.
 
 If you want to run the app without building it, a _dist.zip_ file is included.
 Simply copy the contents of this zip file to your favorite HTTP server.
+Note: if you have any permissions errors, check the directory and file permissions
+after downloading, and unzipping the zip file.
 
 ## Technologies Used in this App
 
