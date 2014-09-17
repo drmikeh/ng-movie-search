@@ -1,6 +1,6 @@
 # ng-movie-search
 
-A simple AngularJS app that searches for movie information.
+A simple AngularJS app that searches for movie information using the OMDb REST API.
 
 ## Build Instructions
 To build this app from the source you will need to install
